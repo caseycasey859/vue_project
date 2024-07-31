@@ -54,8 +54,6 @@
   <h3>---------------------속성 연결---------------------</h3>
   <div>
     <img v-bind:src="imgSrc" alt="" v-bind:title="tooltip"/>
-
-  
   </div>
   <div>
     <button v-bind:disabled="show1" >눌러주세요</button>
@@ -133,10 +131,7 @@ export default {
       goodfood:[],
       badfood:[],
       gender:'남',
-    
-      imgSrc:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHciAYekUyU6iGOcae3_rkd7NrELBZqGFKig&s',
-       
-      
+      imgSrc:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj7k7mC3Ruk_MyrLNwaUz3jcSZdlXV7z98DA&s',
       tooltip:'툴팁메시지',
       show1:true,
       show2:false,
