@@ -1,46 +1,46 @@
 <template>
   <div class="">
-    <input type="text" name="" value="333"/><br/>
-    <!-- <input type="text" v-bind:value="nick"/><br/>   -->
-    <input type="text" v-model="nick"/><br/>
-    <input type="number" v-model.number="age"/><br/>
-    <textarea cols="30" rows="10">동해물과 백두산이</textarea><br/>
-    <textarea v-model="message" cols="30" rows="10"></textarea><br/>
-    <select name="" id="">
-          <option value="01">서울</option>
-          <option value="02">부산</option>
-          <option value="03">대구</option>
-          <option value="04" selected>수원</option>
-    </select>
-     <br/>
-       <select name="" id="">
-          <option value="01">서울</option>
-          <option value="02">부산</option>
-          <option value="03 ">대구</option>
-          <option value="04">수원</option>
-    </select>
-  
-    
+    <input type="checkbox" id="cbtn_agree" name="cbtn_agree">
+    <label for="cbtn_agree">동의</label><br/>
+
+    <label ><input type="checkbox" v-model="agree">동의</label><br/>
+    <label ><input type="checkbox" v-model="agree2"
+    true-value="동의"  false-value="비동의"
+    >{{agree2}}</label><br/>
+
+    <div>
+    <p>기본피자에 원하시는 토핑을 추가하세요</p>
+    <label ><input type="checkbox" v-model="piza" value="치즈" >치즈</label><br/>
+    <label ><input type="checkbox" v-model="piza" value="파인애플" >파인애플</label><br/>
+    <label ><input type="checkbox" v-model="piza" value="버섯" >버섯</label><br/>
+    <p>당신이 추가로 선택하신 토핑은 {{piza}} 입니다.</p>
+    </div>
+
+    <div>
+        <p>당신의 탕수육취향은?</p>
+        <label><input type="radio" v-model="sweet_sour_pork" value="부먹">부먹</label>
+        <label><input type="radio" v-model="sweet_sour_pork" value="찍먹">찍먹</label>
+        <p>당신은 <span style="color:red;font-weight:800;">{{sweet_sour_pork}}파</span> 입니다.</p>
+
+    </div>
+
   </div>
 </template>
+
 
 <script>
 export default {
   name: 'TestView',
-  data(){
-    return{
-      nick:'노래하는 큰바위',
-      age:30,
-      massage:'깊은산속'
-
+  data() {
+    return {
+      agree:false,
+      agree2:"비동의",
+      pizs:[],
+      sweet_sour_pork:'부먹',
+      
     };
   },
-  mounted() {
-    
-  },
-  unmounted() {
-    
-  },
+
   methods: {
     
   }
