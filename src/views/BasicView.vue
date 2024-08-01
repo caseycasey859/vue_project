@@ -196,7 +196,6 @@ td, th{
   padding : 8px;
 }
 th{
-  
   text-align: center;
   font-weight: 600;
 }
