@@ -1,46 +1,33 @@
 <template>
   <div class="">
-    <input type="checkbox" id="cbtn_agree" name="cbtn_agree">
-    <label for="cbtn_agree">동의</label><br/>
-
-    <label ><input type="checkbox" v-model="agree">동의</label><br/>
-    <label ><input type="checkbox" v-model="agree2"
-    true-value="동의"  false-value="비동의"
-    >{{agree2}}</label><br/>
+    <!-- 속성연결 -->
+    <img src='https://borgssam.github.io/MySite/img/album_01.jpg'
+     title="가방든 사나이"><br/>
+    <img v-bind:src="imgSrc" alt="" v-bind:title="imgTitle"><br/>
 
     <div>
-    <p>기본피자에 원하시는 토핑을 추가하세요</p>
-    <label ><input type="checkbox" v-model="piza" value="치즈" >치즈</label><br/>
-    <label ><input type="checkbox" v-model="piza" value="파인애플" >파인애플</label><br/>
-    <label ><input type="checkbox" v-model="piza" value="버섯" >버섯</label><br/>
-    <p>당신이 추가로 선택하신 토핑은 {{piza}} 입니다.</p>
+        <button :disabled="btn_01" :style="color_blue">버튼</button>
+        <button :disabled="btn_02" :style="color_red">버튼</button>
     </div>
 
-    <div>
-        <p>당신의 탕수육취향은?</p>
-        <label><input type="radio" v-model="sweet_sour_pork" value="부먹">부먹</label>
-        <label><input type="radio" v-model="sweet_sour_pork" value="찍먹">찍먹</label>
-        <p>당신은 <span style="color:red;font-weight:800;">{{sweet_sour_pork}}파</span> 입니다.</p>
-
-    </div>
-
+    
   </div>
 </template>
-
 
 <script>
 export default {
   name: 'TestView',
   data() {
     return {
-      agree:false,
-      agree2:"비동의",
-      pizs:[],
-      sweet_sour_pork:'부먹',
+        imgSrc:'https://borgssam.github.io/MySite/img/album_01.jpg',
+        imgTitle:'가방든 사나이',
+        btn_01:true,
+        btn_02:false,
+        color_blue: {color:'blue', fontSize:'32px'},
+        color_red: {color:'red',fontSize:'32px'},
       
     };
   },
-
   methods: {
     
   }
