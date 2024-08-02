@@ -3,7 +3,7 @@
     <!-- 내용을 추가하세요 -->
     <p>큰아들 : {{message}}</p>
     <cute-gson-11 ref="gson11"/>
-    <cute-gson-12 ref="gson12"/>
+    <cute-gson-12 ref="gson12" @event_report="receiveEvent"/>
     <input type="text" v-model="sndMessage">
     <button @click="clickSon10">큰아들버튼</button>
     <button @click="clickSon20">큰아들버튼2</button>
@@ -46,19 +46,8 @@ export default {
   data() {
     return {
       message:'',
+      sndMessage:'',
     };
-  },
-  watch: {
-    // sample1() {
-    //   console.log('');
-    // }
-    // 데이터를 감시하고 처리할 로직을 작성합니다.
-  },
-  computed: {
-    // sample2() {
-    //   return '';
-    // }
-    // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
     clickSon10() {
@@ -69,9 +58,9 @@ export default {
       this.message='큰아들이 버튼을 눌렀습니다.'
       this.$refs.gson12.clickMsg('큰아버지가 둘째아들에게 명령함');
     },
-      clickSon30() {
+    clickSon30() {
       this.message='큰아들이 버튼을 눌렀습니다.'
-      this.$refs.gson11.message =this.sndMessage;
+      this.$refs.gson11.message = this.sndMessage;
       this.$refs.gson12.message = this.sndMessage;
     },
     changeTextColor(idx, data){
@@ -79,6 +68,9 @@ export default {
       this.$refs.gson11.changeTextColor(idx,data);
       this.$refs.gson12.changeTextColor(idx,data);
       // alert('goodson2=>'+idx+','+data);
+    },
+    receiveEvent(data) {
+      this.message = data;
     }
     
   },
@@ -99,7 +91,7 @@ export default {
 
 <style scoped>
 .son{
-  background-color: moccasin;
+  background-color: rgb(128, 117, 100);
   padding:20px;
   margin: 20px;
 }
