@@ -2,7 +2,7 @@
   <div class="gson">
     <!-- 내용을 추가하세요 -->
     
-    <p v-bind:style="{color:tcolor}" >작은집손자 1 </p>
+    <p v-bind:style="{color:tcolor}" >작은집손자 1 :{{message}} </p>
   </div>
 </template>
 
@@ -39,6 +39,7 @@ export default {
       // 컴포넌트의 데이터를 초기화합니다.
       index:1,
       tcolor:'red',
+      message:'',
     };
   },
   watch: {

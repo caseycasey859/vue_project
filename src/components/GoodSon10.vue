@@ -4,7 +4,7 @@
     <p>큰아들 : {{message}}</p>
     <cute-gson-11 ref="gson11"/>
     <cute-gson-12 ref="gson12"/>
-    <input type="text" v-model="sndMessge">
+    <input type="text" v-model="sndMessage">
     <button @click="clickSon10">큰아들버튼</button>
     <button @click="clickSon20">큰아들버튼2</button>
     <button @click="clickSon30">큰아들버튼3</button>
@@ -71,8 +71,8 @@ export default {
     },
       clickSon30() {
       this.message='큰아들이 버튼을 눌렀습니다.'
-      this.$refs.gson11.message('큰아버지가 둘째아들에게 명령함');
-      this.$refs.gson12.message('큰아버지가 둘째아들에게 명령함');
+      this.$refs.gson11.message =this.sndMessage;
+      this.$refs.gson12.message = this.sndMessage;
     },
     changeTextColor(idx, data){
       // alert('goodson2=>'+idx+','+data);

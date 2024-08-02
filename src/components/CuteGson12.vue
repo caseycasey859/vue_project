@@ -1,7 +1,7 @@
 <template>
   <div class="gson">
     <!-- 내용을 추가하세요 -->
-    <p  v-bind:style="{color:tcolor}" >큰집손자 2 </p>
+    <p  v-bind:style="{color:tcolor}" >큰집손자 2:{{message}} </p>
   </div>
 </template>
 

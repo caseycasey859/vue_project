@@ -4,6 +4,8 @@
     <p>둘째아들</p>
     <cute-gson-21 ref="gson21"/>
     <cute-gson-22 ref="gson22"/>
+    <input type="text" v-model="sndMsg">
+    <input type="button" value="둘째아들버튼" @click="clickBtn">
   
   </div>
 </template>
@@ -42,6 +44,7 @@ export default {
   data() {
     return {
       // 컴포넌트의 데이터를 초기화합니다.
+      sndMsg:'',
     };
   },
   watch: {
@@ -58,10 +61,14 @@ export default {
   },
   methods: {
     changeTextColor(idx, data){
-   
       this.$refs.gson21.changeTextColor(idx,data);
       this.$refs.gson22.changeTextColor(idx,data);
+    }, 
+    clickBtn(){
+      this.$refs.gson21.message = this.sndMsg;
+      this.$refs.gson22.message = this.sndMsg;
     }
+
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
@@ -80,7 +87,7 @@ export default {
 
 <style scoped>
 .son{
-  background-color: moccasin;
+  background-color: rgb(128, 117, 100);
   padding:20px;
   margin: 20px;
 }
