@@ -1,19 +1,13 @@
 <template>
-  <div class="">
-    <br><br><br><br><br><br><br>
-    <GoodSon10 />
-    <GoodSon20 />
+  <div class="gson">
+    <!-- 내용을 추가하세요 -->
+    <p>작은집손자 2 </p>
   </div>
 </template>
 
 <script>
-import GoodSon10 from '@/components/GoodSon10.vue';
-import GoodSon20 from '@/components/GoodSon20.vue';
 export default {
-  name: 'TestView',
-  components: {
-    GoodSon10, GoodSon20,
-  },
+  name: 'CuteGson22',
   props: {
     // 문자열 타입의 prop 예시
     //sampleString: {
@@ -35,6 +29,9 @@ export default {
     //  type: Object,
     //  default: () => ({})
     //}
+  },
+  components: {
+    // 추가적으로 사용할 컴포넌트들을 등록합니다.
   },
   data() {
     return {
@@ -75,5 +72,10 @@ export default {
 </script>
 
 <style scoped>
-/* 스타일을 추가하세요 */
+.son{
+  background-color: moccasin;
+}
+.gson{
+  background-color: yellow;
+}
 </style>
