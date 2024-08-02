@@ -4,6 +4,7 @@
     <router-link to="/about">About</router-link> 
     <router-link to="/Test">테스트</router-link>
     <router-link to="/basic">3.콤보넌트(기본)</router-link>
+    <router-link to="/basic">8.콤보넌트(심화)</router-link>
   </nav>
   <router-view/>
 </template>
@@ -41,11 +42,6 @@ nav a {
 nav a:not(:last-child){
   margin-bottom: 10px;
 }
-
-
-
-
-
 
 
 </style>

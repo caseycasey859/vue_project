@@ -99,16 +99,83 @@
     <button v-on:click="increaseCounter">클릭(증가)</button>
     <button @:click="decreaseCounter">클릭(감소)</button>
     <p>counter:{{counter}}</p>
-    <input type="number" v-model="countValue">
-    <button @:click="applyCounter">적용</button>
-
     <button @:click="increaseCounter(),showMsg()">증가후 알림창</button>
     <button @:click="decreaseCounter(),showMsg()">감소후 알림창</button>
+    <br>
+    <input type="number" v-model="countValue">
+    <button @:click="applyCounter">적용</button>
+  </div>
+  <br><br>
+  <div>
+    <select v-model="cityValue" @change="changeCity">
+      <option value="서울">서울</option>
+      <option value="부산">부산</option>
+      <option value="대구">대구</option>
+      <option value="수원">수원</option>
+    </select>
+  </div>
+  
+  <br/> <br/> 
 
+  <div>
+    <input type="text" v-model="emailValue" @input="changeEmail" placeholder="이메일을 입력하세요">
+    <!-- <p>{{emailValue}}/{{errEmail}}</p> -->
+    <p v-if="errEmail" >{{errEmail}}</p>
+  </div>
+  
+  
+  <br/> <br/> 
 
+  <div>
+    <input type="text" v-model="pwdValue1" @input="changePwd1" placeholder="비번을 입력하세요"><br>
+    <input type="text" v-model="pwdValue2" @input="changePwd1" placeholder="비번확인을 입력하세요"><br>
+    <p v-if="errPwd" >{{errPwd}}</p>
+  </div>
+  <!-- 메소드 computed -->
+  <div>
+    <p>{{hello()}}</p>
+    <p>{{hello()}}</p>
+    <p>{{hello()}}</p>
+
+    <p>{{ hello2 }}</p>
+    <p>{{ hello2 }}</p>
+    <p>{{ hello2 }}</p>
+  </div>
+  
+  <div>
+    성: <input type="text" v-model="lastName" @input="changeLastName"><br>
+    이름: <input type="text" v-model="firstName" @input="changeFirstName"><br>
+    <p>method:  {{ methodFullName() }}</p>
+    <p>method:  {{ methodFullName() }}</p>
+    <p>computed: {{ computeFullName }}</p>
+    <p>computed: {{ computeFullName }}</p>
+    <p>fullName: {{fullName}}</p>
+    <p>fullName: {{fullName}}</p>
   </div>
 
-  <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+  <!-- watch -->
+  <div>
+    <h4>user_info : {{userInfo}}</h4>
+    <input type="text" v-model="userName" >
+    <input type="text" v-model="userAge" >
+  </div>
+  <br><hr>
+  <div class="">
+    <label > 성 : <input type="text" v-model="familyName1" @input="makeFullName1"></label>
+    <label > 이름: <input type="text" v-model="name1" @input="makeFullName1"> </label>
+    <p>성명(method) : {{ fullName1 }}</p>
+  </div><br><br>
+  <div class="">
+    <label > 성 : <input type="text" v-model="familyName2"></label>
+    <label > 이름: <input type="text" v-model="name2"> </label>
+    <p>성명(computed) : {{ makeFullName2 }}</p>
+  </div><br><br>
+  <div class="">
+    <label > 성 : <input type="text" v-model="familyName3"></label>
+    <label > 이름: <input type="text" v-model="name3"> </label>
+    <p>성명(watch) : {{ fullName3 }}</p>
+  </div>
+  <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
   끝
 
 </template>
@@ -131,7 +198,7 @@ export default {
       goodfood:[],
       badfood:[],
       gender:'남',
-      imgSrc:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj7k7mC3Ruk_MyrLNwaUz3jcSZdlXV7z98DA&s',
+      imgSrc:'https://borgssam.github.io/MySite/img/album_01.jpg',
       tooltip:'툴팁메시지',
       show1:true,
       show2:false,
@@ -152,9 +219,44 @@ export default {
       ],
       counter: 0,
       countValue:10,
-
+      cityValue:'수원',
+      emailValue: '',
+      errEmail:'',
+      pwdValue1:'',
+      pwdValue2:'',
+      errPwd:'',
+      lastName:'',
+      firstName:'',
+      fullName:'',
+      userName:'홍길동',
+      userAge:'30',
+      userInfo:'',
 
     };
+  },
+  watch:{
+    userName(){
+      this.userInfo = this.userName+'('+this.userAge+')';
+    },
+    familyName3(){
+        this.fullName3 = this.familyName3+ ' - ' + this.name3;
+    },
+    name3(){
+        this.fullName3 = this.familyName3+ ' - ' + this.name3;
+    }
+  },
+  computed: {
+    hello2() {
+      console.log('hello2 호출');
+      return '안녕하세요, 반가워요';
+    },
+    computeFullName() {
+      console.log('computeFullName 호출');
+      return this.lastName + this.firstName;
+    },
+    makeFullName2(){
+        return this.familyName2+ ' - ' + this.name2;
+    }
   },
   setup() {
     
@@ -180,7 +282,62 @@ export default {
     },
     showMsg(){
       alert('현재값 = >'+ this.counter );
-    }
+    },
+    changeCity(){
+      alert('선택하신 도시 : '+this.cityValue);
+    },
+    changeEmail(){
+      console.log('sss');
+      // 이메일 형식 정규 표현식
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      // this.errEmail = this.emailValue;
+      if(this.emailValue === '' || emailPattern.test(this.emailValue)){
+        this.errEmail='';
+        console.log('ok'+this.emailValue);
+      } else {
+        this.errEmail='이메일 형식에 어긋납니다.';
+        console.log('err'+this.emailValue);
+      }
+
+    },
+    changePwd1(){
+      if(this.pwdValue1===''){
+        this.errPwd='비번을 입력하세요';
+      } else if(this.pwdValue2===''){
+        this.errPwd='비번확인을 입력하세요';
+      } else if(this.pwdValue1.length < 8 || this.pwdValue2.length < 8 ){
+        this.errPwd = '비밀번호는 최소 8자리수 이상입니다.';
+      } else if(this.pwdValue1===this.pwdValue2){
+        this.errPwd = '비밀번호가 유효합니다.';
+      } else {
+        this.errPwd = '비번이 일치하지 않습니다.';
+      }
+
+    },
+    hello(){
+      console.log('hello()호출');
+      return '안녕하세요, 반갑습니다.';
+    },
+    changeLastName() {
+      // lastName 변경 시 fullName 업데이트
+      console.log('changeLastName 호출');
+      this.fullName = this.lastName + this.firstName;
+    },
+    changeFirstName() {
+      // firstName 변경 시 fullName 업데이트
+      console.log('changeFirstName 호출');
+      this.fullName = this.lastName + this.firstName;
+    },
+    methodFullName() {
+      // 메소드로 fullName 계산
+      console.log('methodFullName 호출');
+      return this.lastName + this.firstName;
+    },    
+    makeFullName1(){
+        this.fullName1 = this.familyName1+ ' - ' + this.name1;
+    },
+    
+
   }
 };
 </script>
@@ -196,6 +353,7 @@ td, th{
   padding : 8px;
 }
 th{
+  
   text-align: center;
   font-weight: 600;
 }

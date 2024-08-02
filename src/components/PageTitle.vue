@@ -1,59 +1,53 @@
 <template>
-  <div class="">
-    <page-title title="title1" age="3"
-    hobbies="['자전거','등산','꽃꽂이','게임']"
-    family="{'papa':'아빠','mom':'엄마'}"
-    />
-    <page-title :title="title1" :age="age" 
-    :hobbies="hobbies"
-    :family="family"  
-    :func="customFunc"
-    />
-  </div>
-  <div>
-    <input type="text" v-model="hobby">
-    <button @click='addHobby'>취미추가</button>
+  <div class="page_title">
+    <h2>Page Title</h2>
+    <p>제목:{{title}}</p>
+    <p>나이:{{age+1}}</p>
+    <p>취미:{{hobbies}}</p>
+    <p>부:{{family.papa}},모:{{family.mom}}</p>
+    <p>함수 결과: {{ func() }}</p>
   </div>
 </template>
 
 <script>
-import PageTitle from '@/components/PageTitle.vue';
 export default {
-  name: 'TestView',
-  components: {
-    PageTitle
-    // 추가적으로 사용할 컴포넌트들을 등록합니다.
-  },
+  name: 'PageTitle',
   props: {
     // 문자열 타입의 prop 예시
-    //sampleString: {
-    //  type: String,
-    //  default: ''
-    //},
+    title: {
+     type: String,
+     default: '제목없음'
+    },
     // 숫자 타입의 prop 예시
-    //sampleNumber: {
-    //  type: Number,
-    //  default: 0
-    //},
+    age: {
+     type: Number,
+     default: 0
+    },
     // 배열 타입의 prop 예시
-    //sampleArray: {
-    //  type: Array,
-    //  default: () => []
-    //},
+    hobbies: {
+    type: Array,
+    default: () => ['바둑','낚시']
+    },
     // 객체 타입의 prop 예시
-    //sampleObject: {
-    //  type: Object,
-    //  default: () => ({})
-    //}
+    family: {
+     type: Object,
+     default: () => ({})
+    },
+    //함수타입props
+    func: {
+      type: Function,
+      default: function() {
+        return '기본 자식 함수';
+      }
+    }
+  },
+  components: {
+    // 추가적으로 사용할 컴포넌트들을 등록합니다.
   },
   data() {
     return {
       // 컴포넌트의 데이터를 초기화합니다.
-      title1:'page 1',
-      age:3,
-      hobbies:[],
-      hobby:'',
-      family:{papa:'아빠',mom:'엄마'},
+      funcName:'',
     };
   },
   watch: {
@@ -69,13 +63,9 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    addHobby() {      
-      this.hobbies.push(this.hobby);
-      return '';
-    },
-    customFunc(){
-      return '부모 지정 사용자함수';
-    }
+    // sample3() {
+    //   return '';
+    // }
     // 컴포넌트에서 사용할 메서드를 정의합니다.
   },
   setup() {
@@ -95,4 +85,7 @@ export default {
 
 <style scoped>
 /* 스타일을 추가하세요 */
+.page_title{
+  background-color:darksalmon;
+}
 </style>
