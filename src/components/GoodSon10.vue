@@ -1,7 +1,7 @@
 <template>
   <div class="son">
     <!-- 내용을 추가하세요 -->
-    <p>큰아들 : {{message}}</p>
+    <p>큰아들 : {{message}} {{computedMsg}}</p>
     <cute-gson-11 ref="gson11"/>
     <cute-gson-12 ref="gson12" @event_report="receiveEvent"/>
     <input type="text" v-model="sndMessage">
@@ -49,6 +49,15 @@ export default {
       sndMessage:'',
     };
   },
+  computed:{
+    computedMsg(){
+      if(this.$refs.gson11){
+        // this.message = '강아지';
+        return this.$refs.gson11.gsonMsg+'!!';
+      }
+      return '';
+    }
+  },
   methods: {
     clickSon10() {
       this.message='큰아들이 버튼을 눌렀습니다.'
@@ -81,6 +90,7 @@ export default {
     // 컴포넌트가 생성될 때 실행될 로직을 작성합니다.
   },
   mounted() {
+    this.$forceUpdate();
     // 컴포넌트가 DOM에 마운트된 직후 실행될 로직을 작성합니다.
   },
   unmounted() {

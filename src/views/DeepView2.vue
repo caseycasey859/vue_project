@@ -1,16 +1,20 @@
 <template>
-  <div class="gson">
-    <!-- 내용을 추가하세요 -->
-    <p v-bind:style="{color:tcolor}" >큰집손자 1 :{{message}}</p>
-    <input type="text" v-model="gsonMsg">
-    <button @click="clickMsg">장손메시지</button>
-
+  <div class="">
+    <br><br><br><br><br>
+    <GoodSon10 ref="son10"/>
+    <GoodSon20 ref="son20"/>
+    <input type="button" value="할아버지버튼1" @click="clickGpapa">
   </div>
 </template>
 
 <script>
+import GoodSon10 from '@/components/GoodSon10.vue';
+import GoodSon20 from '@/components/GoodSon20.vue';
 export default {
-  name: 'CuteGson11',
+  name: 'DeepView2',
+  components: {
+    GoodSon10, GoodSon20,
+  },
   props: {
     // 문자열 타입의 prop 예시
     //sampleString: {
@@ -33,15 +37,9 @@ export default {
     //  default: () => ({})
     //}
   },
-  components: {
-    // 추가적으로 사용할 컴포넌트들을 등록합니다.
-  },
   data() {
     return {
-      message:'',
-      index:1,
-      tcolor:'red',
-      gsonMsg:'',
+      // 컴포넌트의 데이터를 초기화합니다.
     };
   },
   watch: {
@@ -57,23 +55,18 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    clickMsg() {
-      this.message = '장손이 버튼을 눌렀습니다.';
-    },
-    changeTextColor(idx,data){
-      if(this.index == idx) {
-        this.tcolor=data;
-      }
+    clickGpapa() {
+      //alert('clickGpapa() 시작');
+      //둘째 아들들은 호출해서 글씨 파란색으로 바꾸기
+      this.$refs.son10.changeTextColor(2,'blue');
+      this.$refs.son20.changeTextColor(2,'blue');
+      //alert('clickGpapa() 끝');
     }
-  }
+    // 컴포넌트에서 사용할 메서드를 정의합니다.
+  },
 };
 </script>
 
 <style scoped>
-.son{
-  background-color: moccasin;
-}
-.gson{
-  background-color: yellow;
-}
+/* 스타일을 추가하세요 */
 </style>

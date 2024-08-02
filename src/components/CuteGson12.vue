@@ -88,7 +88,7 @@ export default {
 
 <style scoped>
 .son{
-  background-color: rgb(128, 117, 100);
+  background-color: rgb(204, 146, 59);
 }
 .gson{
   background-color: yellow;
