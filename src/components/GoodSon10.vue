@@ -1,9 +1,13 @@
 <template>
   <div class="son">
     <!-- 내용을 추가하세요 -->
-    <p>큰아들</p>
-    <cute-gson-11/>
-    <cute-gson-12/>
+    <p>큰아들 : {{message}}</p>
+    <cute-gson-11 ref="gson11"/>
+    <cute-gson-12 ref="gson12"/>
+    <input type="text" v-model="sndMessge">
+    <button @click="clickSon10">큰아들버튼</button>
+    <button @click="clickSon20">큰아들버튼2</button>
+    <button @click="clickSon30">큰아들버튼3</button>
   </div>
 </template>
 
@@ -41,7 +45,7 @@ export default {
   },
   data() {
     return {
-      // 컴포넌트의 데이터를 초기화합니다.
+      message:'',
     };
   },
   watch: {
@@ -57,10 +61,26 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    // sample3() {
-    //   return '';
-    // }
-    // 컴포넌트에서 사용할 메서드를 정의합니다.
+    clickSon10() {
+      this.message='큰아들이 버튼을 눌렀습니다.'
+      this.$refs.gson11.clickMsg();
+    },
+    clickSon20() {
+      this.message='큰아들이 버튼을 눌렀습니다.'
+      this.$refs.gson12.clickMsg('큰아버지가 둘째아들에게 명령함');
+    },
+      clickSon30() {
+      this.message='큰아들이 버튼을 눌렀습니다.'
+      this.$refs.gson11.message('큰아버지가 둘째아들에게 명령함');
+      this.$refs.gson12.message('큰아버지가 둘째아들에게 명령함');
+    },
+    changeTextColor(idx, data){
+      // alert('goodson2=>'+idx+','+data);
+      this.$refs.gson11.changeTextColor(idx,data);
+      this.$refs.gson12.changeTextColor(idx,data);
+      // alert('goodson2=>'+idx+','+data);
+    }
+    
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.

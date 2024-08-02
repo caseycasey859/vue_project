@@ -1,8 +1,9 @@
 <template>
   <div class="">
     <br><br><br><br><br><br><br>
-    <GoodSon10 />
-    <GoodSon20 />
+    <GoodSon10 ref="son10"/>
+    <GoodSon20 ref="son20"/>
+    <input type="button" value="할아버지버튼1" @click="clickGpapa">
   </div>
 </template>
 
@@ -54,23 +55,15 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    // sample3() {
-    //   return '';
-    // }
+    clickGpapa() {
+      //alert('clickGpapa() 시작');
+      //둘째 아들들은 호출해서 글씨 파란색으로 바꾸기
+      this.$refs.son10.changeTextColor(2,'blue');
+      this.$refs.son20.changeTextColor(2,'blue');
+      //alert('clickGpapa() 끝');
+    }
     // 컴포넌트에서 사용할 메서드를 정의합니다.
   },
-  setup() {
-    // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
-  },
-  created() {
-    // 컴포넌트가 생성될 때 실행될 로직을 작성합니다.
-  },
-  mounted() {
-    // 컴포넌트가 DOM에 마운트된 직후 실행될 로직을 작성합니다.
-  },
-  unmounted() {
-    // 컴포넌트가 파괴되기 전 실행될 로직을 작성합니다.
-  }
 };
 </script>
 

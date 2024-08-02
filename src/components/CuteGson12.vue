@@ -1,7 +1,7 @@
 <template>
   <div class="gson">
     <!-- 내용을 추가하세요 -->
-    <p>큰집손자 2 </p>
+    <p  v-bind:style="{color:tcolor}" >큰집손자 2 </p>
   </div>
 </template>
 
@@ -36,6 +36,8 @@ export default {
   data() {
     return {
       // 컴포넌트의 데이터를 초기화합니다.
+      tcolor:'red',
+      index:2,
     };
   },
   watch: {
@@ -51,6 +53,16 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
+    clickMsg(data){
+      this.message=data;
+    },
+    changeTextColor(idx,data){
+      if(this.index == idx) {
+        this.tcolor=data;
+      }
+    }
+  
+  
     // sample3() {
     //   return '';
     // }

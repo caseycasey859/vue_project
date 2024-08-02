@@ -2,15 +2,15 @@
   <div class="son">
     <!-- 내용을 추가하세요 -->
     <p>둘째아들</p>
-    <cute-gson-21/>
-    <cute-gson-22/>
+    <cute-gson-21 ref="gson21"/>
+    <cute-gson-22 ref="gson22"/>
   
   </div>
 </template>
 
 <script>
 import CuteGson21 from './CuteGson21.vue';
-import CuteGson22 from './CuteGson21.vue';
+import CuteGson22 from './CuteGson22.vue';
 export default {
   name: 'GoodSon20',
   props: {
@@ -57,10 +57,11 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    // sample3() {
-    //   return '';
-    // }
-    // 컴포넌트에서 사용할 메서드를 정의합니다.
+    changeTextColor(idx, data){
+   
+      this.$refs.gson21.changeTextColor(idx,data);
+      this.$refs.gson22.changeTextColor(idx,data);
+    }
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
